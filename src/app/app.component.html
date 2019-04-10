@@ -1,20 +1,20 @@
 <div id="content" class="col-lg-10 offset-lg-1">
   
-  <header id="header" class="col-lg-12">
+  <header id="header" class="col-lg-12" [style.background]="header_color">
     <h1>{{title}}</h1>
   </header>
 
   <nav id="nav" class="col-lg-12">
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Products</a></li>
+      <li><a [routerLink]="['/home']"     [routerLinkActive]="['activated']">Home</a></li>
+      <li><a [routerLink]="['/products']" [routerLinkActive]="['activated']">Products</a></li>
       <li><a href="#">Add Products</a></li>
     </ul>
   </nav>
 
   <section id="main" class="col-lg-12">
     <!-- Current component -->
-    <h3>Principal text :D</h3>
+    <router-outlet></router-outlet>
   </section>
 
   <footer id="footer">
