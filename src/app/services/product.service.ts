@@ -12,11 +12,19 @@ export class ProductService{
         public _http: HttpClient
     ){
         this.url = GLOBAL.url;
-        console.log("createddddddddddddddddddddddd");
+        //this.url = 'https://jsonplaceholder.typicode.com/posts';
     }
 
     getProducts(){
-        console.log("function executed")
-        return 'text from service';
+        return this._http.get(this.url + 'Product').pipe(map(res => res));
+        //return this._http.get(this.url).pipe(map(res => res));
+    }
+
+    addProduct(product: Product){
+        let payload = JSON.stringify(product);
+        let header = new Headers({
+            'Content-Type':'application/x-www-form-urlencoded'
+        });
     }
 }
+

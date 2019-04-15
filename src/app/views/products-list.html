@@ -1,2 +1,17 @@
 <h3>{{title}}</h3>
 <hr>
+
+<div *ngIf="!products">
+    Uploading products list...
+</div>
+
+<div *ngIf="products">
+    <ul>
+        <li *ngFor="let product of products">
+            <h4><strong>{{product.id}}.- {{product.name}}</strong></h4>
+            <p>Description: {{product.description}}</p>
+            <p>Price: {{product.price}}</p>
+            <p>Image: {{product.image}}</p>
+        </li>
+    </ul>
+</div>

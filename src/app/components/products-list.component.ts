@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ProductService } from '../services/product.service';
+import { Product } from '../models/product';
 
 @Component({
     selector: 'product-list',
@@ -10,6 +11,7 @@ import { ProductService } from '../services/product.service';
 
 export class ProductsListComponent {
     public title: string;
+    public products: Product[];
 
     constructor(
         private _route: ActivatedRoute,
@@ -20,8 +22,32 @@ export class ProductsListComponent {
     }
 
     ngOnInit(){
-        console.log('products-list component ready!')
+        console.log('products-list component ready!');
 
-        alert(this._productService.getProducts());
+        this._productService.getProducts().subscribe(
+            response => {
+                this.products = <Product[]>response;
+            },
+            err => {
+                console.log("Error:" + err);
+            }
+        );
+    
     }
 }
+
+/*
+
+
+            result => {
+                this.articles = result
+                if (!this.articles){
+                    console.log("Server error");
+                }
+            },
+            error => {
+                var errorMsg = <any>error
+                console.log(errorMsg)
+                console.log(error)
+            }
+*/

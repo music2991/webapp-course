@@ -70,3 +70,20 @@
     border-top: 1px solid #eee;
     color: gray;
 }
+
+/* Form*/
+#form-product label{
+    margin-top: 15px !important;
+}
+
+#form-product input {
+    height: auto;
+    padding: 10px;
+}
+
+#form-submit{
+    margin-top: 20px;
+    margin-left: auto;
+    display: table;
+    margin-right: auto;
+}

@@ -1,4 +1,4 @@
 export var GLOBAL = {
-    url: '',
+    url: 'http://localhost:6767/api/',
     header_color: '#E03137'
 }
