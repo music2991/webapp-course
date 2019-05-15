@@ -22,9 +22,11 @@ export class ProductService{
 
     addProduct(product: Product){
         let payload = JSON.stringify(product);
-        let header = new Headers({
+        let headers = new HttpHeaders({
             'Content-Type':'application/x-www-form-urlencoded'
         });
+
+        return this._http.post(this.url+'Product', payload, {headers: headers, observe: 'response'});
     }
 }
 

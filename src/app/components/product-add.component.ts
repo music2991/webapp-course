@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 // Services
@@ -16,7 +17,11 @@ export class ProductAddComponent{
     public title: string;
     public product: Product;
 
-    constructor(){
+    constructor(
+        private _productService: ProductService,
+        private _route: ActivatedRoute,
+        private _router: Router
+    ){
         this.title = "Create new Product";
         this.product = new Product(0, "", "", "", "")
     }
@@ -26,6 +31,19 @@ export class ProductAddComponent{
     }
 
     onSubmit(){
-        console.log(this.product)
+        //console.log(this.product)
+        this._productService.addProduct(this.product).subscribe(
+            response => {
+                if( response.status == 200 ){
+                    this._router.navigate(['/products']);
+                } else {
+                    console.log("Error in response: ");
+                    console.log(response);
+                }
+            },
+            error => {
+                console.log(<any>error);
+            }
+        );
     }
 }

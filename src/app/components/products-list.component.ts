@@ -26,6 +26,7 @@ export class ProductsListComponent {
 
         this._productService.getProducts().subscribe(
             response => {
+                console.log("* We are in the response proccesing")
                 this.products = <Product[]>response;
             },
             err => {
